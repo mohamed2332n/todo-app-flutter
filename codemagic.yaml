@@ -1,13 +1,15 @@
 workflows:
-  android-release:
-    name: Android Release
+  ios-release:
+    name: iOS Release
 
     environment:
       flutter: stable
+      xcode: latest
 
     scripts:
+      - flutter --version
       - flutter pub get
-      - flutter build apk --release
+      - flutter build ios --release --no-codesign
 
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
+      - build/ios/iphoneos/*.app
